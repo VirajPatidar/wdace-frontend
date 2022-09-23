@@ -5,8 +5,9 @@ import Navbar from './components/navbar';
 import NotFound from './components/notFound';
 import Home from './components/home';
 import Classify from './components/classify';
-import Test from './components/test';
 import Approach from './components/approach';
+import Results from './components/results';
+import Test from './components/test';
 
 // MUI
 import { cyan } from '@mui/material/colors';
@@ -30,6 +31,7 @@ function App() {
 
                 <Route path="/classify" element={<Classify />} exact />
                 <Route path="/approach" element={<Approach />} exact />
+                <Route path="/results" element={<Results />} exact />
                 <Route path="/test" element={<Test />} exact />
 
                 <Route path="*" element={<NotFound />} />
