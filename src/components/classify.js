@@ -50,7 +50,7 @@ const Summarize = () => {
             //     form_data.append('file', file[0]);
             // }
             setLoading(true);
-            axios.post(`http://localhost:8000/api/test`, form_data)
+            axios.post(`http://localhost:8000/api/classify`, form_data)
                 .then((res) => {
                     setLoading(false);
                     console.log(res);
