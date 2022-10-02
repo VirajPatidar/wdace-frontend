@@ -14,7 +14,7 @@ const Results = () => {
         <Box>
             <Box>
                 <b>Stats</b> <br />
-                <pre>{JSON.stringify(result.keywords, null, 4)}</pre>
+                <pre>{JSON.stringify(result.len, null, 4)}</pre>
             </Box>
             <Box mt={5}>
                 <b>Keywords</b> <br />
