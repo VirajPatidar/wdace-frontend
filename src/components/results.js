@@ -12,21 +12,34 @@ const Results = () => {
 
     return (
         <Box>
-            <pre>{JSON.stringify(result.len, null, 4)}</pre>
-            <br />
-            {JSON.stringify(result.text.text)}
-            <br />
-            <br />
-            {JSON.stringify(result.keywords)}
-            <br />
-            <br />
-            {JSON.stringify(result.original_lang)}
-            <br />
-            <br />
-            {JSON.stringify(result.text.translated_text)}
-            <br />
-            <br />
-            {JSON.stringify(result.text.extractive_summary)}
+            <Box>
+                <b>Stats</b> <br />
+                <pre>{JSON.stringify(result.keywords, null, 4)}</pre>
+            </Box>
+            <Box mt={5}>
+                <b>Keywords</b> <br />
+                <pre>{JSON.stringify(result.keywords, null, 4)}</pre>
+            </Box>
+            <Box mt={5}>
+                <b>Original Language</b> <br />
+                {result.original_lang}
+            </Box>
+            <Box mt={5}>
+                <b>Title</b> <br />
+                {result.textual_data.title}
+            </Box>
+            <Box mt={5}>
+                <b>Main Text</b> <br />
+                {result.textual_data.mainText}
+            </Box>
+            <Box mt={5}>
+                <b>Extractive Summary</b> <br />
+                {result.textual_data.extractive_summary}
+            </Box>
+            <Box mt={5}>
+                <b>Raw Text</b> <br />
+                {result.textual_data.rawText}
+            </Box>
         </Box>
     );
 }
