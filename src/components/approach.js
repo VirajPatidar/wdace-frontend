@@ -2,6 +2,12 @@ import React from 'react';
 
 //Images
 import modelDiagram from '../images/model_diagram.png';
+import reactSvg from '../images/react.svg';
+import djangoSvg from '../images/django.svg';
+import muiSvg from '../images/material-ui.svg';
+import sqlSvg from '../images/sql.svg';
+import tfSvg from '../images/tensorflow.svg';
+import pytorch from '../images/pytorch.svg';
 
 // MUI
 import { Box, Container, Typography } from "@mui/material";
@@ -38,7 +44,74 @@ const Approach = () => {
                                 <img src={modelDiagram} alt="banner" style={{ height: '50%', maxWidth: '900px', width: '100%' }} />
                             </Box>
                         </Box>
-                        
+                        <Box mt={8}>
+                            <Box mt={2} ml={3}>
+                                <Box >
+                                    <Typography variant='body1'>
+                                        Frontend:
+                                    </Typography>
+                                    <List>
+                                        <ListItem disablePadding>
+                                            <ListItemIcon>
+                                                <ArrowRightIcon />
+                                            </ListItemIcon>
+                                            <img src={reactSvg} alt="react-logo" style={{ height: 50, width: 55 }} /> &nbsp;
+                                            <ListItemText primary="React" />
+                                        </ListItem>
+                                        <ListItem disablePadding>
+                                            <ListItemIcon>
+                                                <ArrowRightIcon />
+                                            </ListItemIcon>
+                                            <img src={muiSvg} alt="MUI-logo" /> &nbsp;&nbsp;
+                                            <ListItemText primary="Material UI" />
+                                        </ListItem>
+                                    </List>
+                                </Box>
+                                <Box mt={2}>
+                                    <Typography variant='body1'>
+                                        Backend:
+                                    </Typography>
+                                    <List>
+                                        <ListItem disablePadding>
+                                            <ListItemIcon>
+                                                <ArrowRightIcon />
+                                            </ListItemIcon>
+                                            <img src={djangoSvg} alt="Django-logo" style={{ height: 50, width: 55 }} />
+                                            <ListItemText primary="Django REST Framework" />
+                                        </ListItem>
+                                        <ListItem disablePadding>
+                                            <ListItemIcon>
+                                                <ArrowRightIcon />
+                                            </ListItemIcon>
+                                            <img src={sqlSvg} alt="SQL-logo" style={{ height: 50, width: 55 }} />
+                                            <ListItemText primary="SQL" />
+                                        </ListItem>
+                                    </List>
+                                </Box>
+                                <Box mt={2}>
+                                    <Typography variant='body1'>
+                                        Deep Learning (NLP):
+                                    </Typography>
+                                    <List>
+                                        <ListItem disablePadding>
+                                            <ListItemIcon>
+                                                <ArrowRightIcon />
+                                            </ListItemIcon>
+                                            <img src={tfSvg} alt="TF-logo" style={{ height: 50, width: 55 }} />
+                                            <ListItemText primary="TensorFlow" />
+                                        </ListItem>
+                                        {" "}
+                                        <ListItem disablePadding>
+                                            <ListItemIcon>
+                                                <ArrowRightIcon />
+                                            </ListItemIcon>
+                                            <img src={pytorch} alt="pytorch" style={{ height: 50, width: 55 }} />
+                                            <ListItemText primary="PyTorch" />
+                                        </ListItem>
+                                    </List>
+                                </Box>
+                            </Box>
+                        </Box>
                     </Box>
                 </Box>
             </Container>
