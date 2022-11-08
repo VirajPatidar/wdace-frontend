@@ -5,7 +5,7 @@ import modelDiagram from '../images/model_diagram.png';
 import reactSvg from '../images/react.svg';
 import djangoSvg from '../images/django.svg';
 import muiSvg from '../images/material-ui.svg';
-import sqlSvg from '../images/sql.svg';
+import neo4jSvg from '../images/neo4j.svg';
 import tfSvg from '../images/tensorflow.svg';
 import pytorch from '../images/pytorch.svg';
 
@@ -37,7 +37,7 @@ const Approach = () => {
                         <Box mt={6} >
                             <Box>
                                 <Typography variant='h5'>
-                                    Model Diagram depicting text processing
+                                    Model Diagram depicting Web Document Classification            
                                 </Typography>
                             </Box>
                             <Box pt={2} sx={{ textAlign: 'center' }}>
@@ -83,8 +83,8 @@ const Approach = () => {
                                             <ListItemIcon>
                                                 <ArrowRightIcon />
                                             </ListItemIcon>
-                                            <img src={sqlSvg} alt="SQL-logo" style={{ height: 50, width: 55 }} />
-                                            <ListItemText primary="SQL" />
+                                            <img src={neo4jSvg} alt="Neo4j-logo" style={{ height: 50, width: 55 }} />
+                                            <ListItemText primary="Neo4j" />
                                         </ListItem>
                                     </List>
                                 </Box>
