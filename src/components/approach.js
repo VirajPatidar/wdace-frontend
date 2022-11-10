@@ -87,7 +87,7 @@ const Approach = () => {
                         <Box mt={6} >
                             <Box>
                                 <Typography variant='h5'>
-                                    Model Diagram depicting Web Document Classification            
+                                    Model Diagram depicting Web Document Classification
                                 </Typography>
                             </Box>
                             <Box pt={2} sx={{ textAlign: 'center' }}>
@@ -95,6 +95,166 @@ const Approach = () => {
                             </Box>
                         </Box>
                         <Box mt={8}>
+                            <Box>
+                                <Typography variant='h5' gutterBottom>
+                                    Web Document Classification
+                                </Typography>
+                                <Typography variant='body1'>
+                                    Web document classification is the process of assigning a Web documents to one or more predefined categories which plays a vital role in focused crawling, assisted development of Web directories, topic-specific Web link analysis, contextual advertising, and analysis of the Web's topical structure.
+                                </Typography>
+                            </Box>
+                            <Box pt={4}>
+                                <Typography variant='h6'>
+                                    1. Knowledge Graph:
+                                </Typography>
+                                <Typography variant='body1'>
+                                    A knowledge graph, also known as a semantic network, represents a network of real-world entities—i.e. objects, events, situations, or concepts—and illustrates the relationship between them. Knowledge Graphs provide a model of how everything is related, having each subject or object represented only once with all its relationships, in the context of all of the other subjects and their relationships. This makes it possible to see how everything is related at a big picture level.
+                                </Typography>
+                            </Box>
+                            <Box mt={3}>
+                                <Typography variant='body1'>
+                                    APPROACH:
+                                </Typography>
+                                <List>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Extract Text from HTML document." />
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Clean, process and translate the text to english." />
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Pass the cleaned text to YAKE alogorithm to get topics and domain" />
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Use topics and domain to create nodes in neo4j and create relation between domain and topics." />
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Store all unique urls in the created node." />
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Query neo4j to get similar web document links." />
+                                    </ListItem>
+                                </List>
+                            </Box>
+                            <Box pt={4}>
+                                <Typography variant='h6'>
+                                    2. Lbl2Vec:
+                                </Typography>
+                                <Typography variant='body1'>
+                                    Lbl2Vec is an algorithm for unsupervised document classification and unsupervised document retrieval. It automatically generates jointly embedded label, document and word vectors and returns documents of categories modeled by manually predefined keywords.
+                                </Typography>
+
+                            </Box>
+                            <Box pt={2}>
+                                <Typography variant='body1'>
+                                    The key idea of the algorithm is that many semantically similar keywords can represent a topic. In the first step, the algorithm creates a joint embedding of document and word vectors. Once documents and words are embedded in a vector space, the goal of the algorithm is to learn label vectors from previously manually defined keywords representing a topic. Finally, the algorithm can predict the affiliation of documents to topics from document vector - label vector similarities.
+                                </Typography>
+                            </Box>
+                            <Box mt={3}>
+                                <Typography variant='body1'>
+                                    ALGORITHM:
+                                </Typography>
+                                <List>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Use the manually defined keywords for each topic of interest." />
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Create jointly embedded document and word vectors using Doc2Vec." />
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Find document vectors that are similar to the keyword vectors of each topic." />
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Clean outlier document vectors for each topic." />
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Compute the centroid of the outlier cleaned document vectors as label vector for each topic." />
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Compute label vector <-> document vector similarities for each label vector and document vector in the dataset." />
+                                    </ListItem>
+                                </List>
+                            </Box>
+                            <Box pt={2}>
+                                <Typography variant='body1'>
+                                    We Scraped 5 X 500 = 2500 websites using the scripts and ran the Lbl2vec model to classify the website into following 5 major categories.
+                                </Typography>
+                            </Box>
+                            <Box>
+                                <List>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="E-Commerce" />
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="News" />
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Blogs + Educational" />
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Business website (not ecommerce) + Gaming + Others" />
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemIcon>
+                                            <ArrowRightIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Social Media and Entertainment" />
+                                    </ListItem>
+                                </List>
+                            </Box>
+                            <Box mt={6}>
+                                <Typography variant='h5'>
+                                    Technologies Used:
+                                </Typography>
+                            </Box>
                             <Box mt={2} ml={3}>
                                 <Box >
                                     <Typography variant='body1'>
