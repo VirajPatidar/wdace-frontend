@@ -31,8 +31,58 @@ const Approach = () => {
                         </Box>
                         <Box mt={2}>
                             <Typography variant='body1'>
-                                Web Document Analyzer and Classification engine can analyze and classify unidentified web documents.
+                                Web Document Analyzer and Classification engine can analyze and classify unidentified web documents. The app provides the following features:
                             </Typography>
+                            <List>
+                                <ListItem disablePadding>
+                                    <ListItemIcon>
+                                        <ArrowRightIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Domain Modeling" secondary="Categorizes unlabelled Web Document to a specific Domain." />
+                                </ListItem>
+                                <ListItem disablePadding>
+                                    <ListItemIcon>
+                                        <ArrowRightIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Keyword and Topics Extraction" secondary="Extract the most important keywords and related topics that define the web document provided." />
+                                </ListItem>
+                                <ListItem disablePadding>
+                                    <ListItemIcon>
+                                        <ArrowRightIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Knowledge Graph" secondary="Provide graphical repesentation of Domains and related Topics." />
+                                </ListItem>
+                                <ListItem disablePadding>
+                                    <ListItemIcon>
+                                        <ArrowRightIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Similar Documents" secondary="Provide links to web documents based on similar domain and topics." />
+                                </ListItem>
+                                <ListItem disablePadding>
+                                    <ListItemIcon>
+                                        <ArrowRightIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Abstractive Text Summarization" secondary="Gives a 1-2 liner defining the meaning of the text extracted for a given web document." />
+                                </ListItem>
+                                <ListItem disablePadding>
+                                    <ListItemIcon>
+                                        <ArrowRightIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Performance and Audit Report" secondary="Provides Performance and Audit Report for a provides web document using lighthouse." />
+                                </ListItem>
+                                <ListItem disablePadding>
+                                    <ListItemIcon>
+                                        <ArrowRightIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Extractive Text Summarization" secondary="Gives a short summary of the text extracted for a given web document." />
+                                </ListItem>
+                                <ListItem disablePadding>
+                                    <ListItemIcon>
+                                        <ArrowRightIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Metadata" secondary="Provides matadata of the web document e.g. Language, document size and document matadata." />
+                                </ListItem>
+                            </List>
                         </Box>
                         <Box mt={6} >
                             <Box>
