@@ -138,7 +138,7 @@ const Classify = () => {
                                 <Box pt={3} pb={3} sx={{ textAlign: "center" }} style={{ width: "100%" }} >
                                     <Paper style={{ backgroundColor: lightbg, maxHeight: '80%', overflow: "auto" }}>
                                         <Typography pt={1} variant="h6" color="primary">Raw Web Content ({result?.original_lang})</Typography>
-                                        <Typography px={2} py={2} sx={{ textAlign: "left" }}>
+                                        <Typography px={2} py={2} sx={{ textAlign: "justify", maxHeight: 400, overflow: "auto" }}>
                                             {result?.textual_data?.rawOriginalText}
                                         </Typography>
                                     </Paper>
@@ -147,8 +147,8 @@ const Classify = () => {
                             <Grid item xs={12} md={6}>
                                 <Box pt={3} pb={3} sx={{ textAlign: "center" }} style={{ width: "100%" }}>
                                     <Paper style={{ backgroundColor: lightbg, maxHeight: '80%', overflow: "auto" }}>
-                                        <Typography pt={1} variant="h6" color="primary">Translated Web Content (English)</Typography>
-                                        <Typography px={2} py={2} sx={{ textAlign: "left" }}>
+                                        <Typography pt={1} variant="h6" color="primary">Translated Content (English)</Typography>
+                                        <Typography px={2} py={2} sx={{ textAlign: "justify", maxHeight: 400, overflow: "auto" }} >
                                             {result?.textual_data?.rawText}
                                         </Typography>
                                     </Paper>
