@@ -23,7 +23,7 @@ const Approach = () => {
         <>
             <Container>
                 <Box sx={{ textAlign: "left" }}>
-                    <Box mt={5} mb={4} pt={3} pb={3} pl={4} pr={4} style={{ backgroundColor: "#e8f5e9", borderRadius: "20px" }}>
+                    <Box mt={5} mb={4} pt={3} pb={3} pl={4} pr={4} style={{ backgroundColor: "#e0f7fa", borderRadius: "20px" }}>
                         <Box justifyContent="flex-start" mb={2}>
                             <Typography variant='h5' gutterBottom>
                                 Web Document Analyzer and Classification Engine
