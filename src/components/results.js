@@ -2,6 +2,7 @@ import React, { useState, forwardRef } from 'react';
 import { results } from '../atoms';
 import { useRecoilValue } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
+import DomainTopicGraph from './domainTopicGraph';
 
 
 //MUI
@@ -115,6 +116,10 @@ const Results = () => {
                 >
                     Security Report
                 </Button>
+            </Box>
+
+            <Box m={3}>
+                <DomainTopicGraph/>
             </Box>
 
             <Box pt={2} pb={1} sx={{ textAlign: "center" }}>
