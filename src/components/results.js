@@ -24,7 +24,7 @@ import Iframe from "react-iframe";
 
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
-  });
+});
 
 const ListItem = styled('li')(({ theme }) => ({
     margin: theme.spacing(0.5),
@@ -55,9 +55,9 @@ const Results = () => {
     const handleLightHouseClickOpen = (url) => {
         const encodedURL = `?url=${encodeURIComponent(url)}`
         const lightHouseUrl = `https://lighthouse.microlink.io/?url=` + encodeURIComponent(`https://api.microlink.io/${encodedURL}&meta=false&insights=true`)
-        
+
         console.log(lightHouseUrl);
-        
+
         setOpen(true);
         setModalHeader('Lighthouse Audit Report');
         setIframeLink(lightHouseUrl);
@@ -67,8 +67,8 @@ const Results = () => {
         setOpen(true);
         setModalHeader("Security Report");
         setIframeLink(link);
-      };
-    
+    };
+
     const handleClose = () => {
         setOpen(false);
         setModalHeader("");
@@ -93,33 +93,45 @@ const Results = () => {
                 </Paper>
             </Box>
 
-
-            <Box pt={2} pb={1}>
-                <Button
-                    size="small"
-                    variant="outlined"
-                    onClick={() =>
-                        handleLightHouseClickOpen(url)
-                    }
-                >
-                    Lighthouse Report
-                </Button>
-            </Box>
-
-            <Box pt={2} pb={1}>
-                <Button
-                    size="small"
-                    variant="outlined"
-                    onClick={() =>
-                        handleClickOpen(url)
-                    }
-                >
-                    Security Report
-                </Button>
-            </Box>
-
-            <Box m={3}>
-                <DomainTopicGraph/>
+            <Box pt={2} pb={1} sx={{ display: "flex", flexDirection: "row" }}>
+                <Grid container spacing={3}>
+                    <Grid item xs={12} sm={12} md={6}>
+                        <Box sx={{ textAlign: "center" }} >
+                            <Paper style={{ backgroundColor: lightbg, height: 355 }} elevation={3}>
+                                <Typography pt={1} variant="h6" color="primary">Domain Topic Graph</Typography>
+                                <DomainTopicGraph domain={result.domain} topics={result.topics} />
+                            </Paper>
+                        </Box>
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                        <Box sx={{ textAlign: "center" }} >
+                            <Paper style={{ backgroundColor: lightbg, height: 352, overflow: "auto" }} elevation={3}>
+                                <Typography pt={1} variant="h6" color="primary">Performace and Audit Reports ({result.original_lang})</Typography>
+                                {/* <Typography px={2} py={2} sx={{ textAlign: "left" }}>
+                                    {result.textual_data.rawOriginalText}
+                                </Typography> */}
+                                <Button
+                                    sx={{ textTransform: 'none' }}
+                                    variant="outlined"
+                                    onClick={() =>
+                                        handleLightHouseClickOpen(url)
+                                    }
+                                >
+                                    Get Lighthouse Report
+                                </Button>
+                                <Button
+                                    sx={{ textTransform: 'none' }}
+                                    variant="outlined"
+                                    onClick={() =>
+                                        handleClickOpen(url)
+                                    }
+                                >
+                                    Get Security Report
+                                </Button>
+                            </Paper>
+                        </Box>
+                    </Grid>
+                </Grid>
             </Box>
 
             <Box pt={2} pb={1} sx={{ textAlign: "center" }}>
@@ -169,7 +181,7 @@ const Results = () => {
                         <Grid item xs={12} sm={12} md={12}>
                             <Box sx={{ textAlign: "center" }} >
                                 <Paper style={{ backgroundColor: lightbg, maxHeight: 300, overflow: "auto" }} elevation={3}>
-                                    <Typography pt={1} variant="h6" color="primary">Raw Web Content ({result.original_lang})</Typography>
+                                    <Typography pt={1} variant="h6" color="primary">Raw Web Content</Typography>
                                     <Typography px={2} py={2} sx={{ textAlign: "left" }}>
                                         {result.textual_data.rawOriginalText}
                                     </Typography>

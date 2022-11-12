@@ -3,8 +3,12 @@ import React, { useState } from "react";
 import { Box } from "@mui/material";
 
 const options = {
+    nodes: {
+        shape: 'dot',
+        size: 14
+    },
     layout: {
-        hierarchical: false
+        hierarchical: false,
     },
     edges: {
         color: "#000000"
@@ -18,66 +22,31 @@ function randomColor() {
     return `#${red}${green}${blue}`;
 }
 
-const DomainTopicGraph = () => {
+const DomainTopicGraph = ({domain, topics}) => {
 
-    const createNode = (x, y) => {
-        const color = randomColor();
-        setState(({ graph: { nodes, edges }, counter, ...rest }) => {
-            const id = counter + 1;
-            const from = Math.floor(Math.random() * (counter - 1)) + 1;
-            return {
-                graph: {
-                    nodes: [
-                        ...nodes,
-                        { id, label: `Node ${id}`, color, x, y }
-                    ],
-                    edges: [
-                        ...edges,
-                        { from, to: id }
-                    ]
-                },
-                counter: id,
-                ...rest
-            }
-        });
+    console.log(topics.toString())
+
+    let graph_nodes=[]
+    let graph_edges=[]
+    graph_nodes.push({id: 1, label: domain, color: "#26c6da"})
+    for (let i = 0; i < topics.length; i++) {
+        graph_nodes.push({id: i+2, label: topics[i], color: "#00acc1"})
+        graph_edges.push({from: 1, to: i+2})
     }
 
     const [state, setState] = useState({
-        counter: 5,
+        counter: topics.length,
         graph: {
-            nodes: [
-                { id: 1, label: "Node 1", color: "#e04141" },
-                { id: 2, label: "Node 2", color: "#e09c41" },
-                { id: 3, label: "Node 3", color: "#e0df41" },
-                { id: 4, label: "Node 4", color: "#7be041" },
-                { id: 5, label: "Node 5", color: "#41e0c9" }
-            ],
-            edges: [
-                { from: 1, to: 2 },
-                { from: 1, to: 3 },
-                { from: 2, to: 4 },
-                { from: 2, to: 5 }
-            ]
-        },
-        events: {
-            select: ({ nodes, edges }) => {
-                console.log("Selected nodes:");
-                console.log(nodes);
-                console.log("Selected edges:");
-                console.log(edges);
-                alert("Selected node: " + nodes);
-            },
-            doubleClick: ({ pointer: { canvas } }) => {
-                createNode(canvas.x, canvas.y);
-            }
+            nodes: graph_nodes,
+            edges: graph_edges
         }
     })
 
-    const { graph, events } = state;
+    const { graph } = state;
 
     return (
         <Box>
-            <Graph graph={graph} options={options} events={events} />
+            <Graph graph={graph} options={options} style={{ height: "320px", padding: "0px", marginBottom: "0px" }} />
         </Box>
     );
 
