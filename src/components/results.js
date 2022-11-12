@@ -55,18 +55,24 @@ const Results = () => {
     const handleLightHouseClickOpen = (url) => {
         const encodedURL = `?url=${encodeURIComponent(url)}`
         const lightHouseUrl = `https://lighthouse.microlink.io/?url=` + encodeURIComponent(`https://api.microlink.io/${encodedURL}&meta=false&insights=true`)
-
+        
         console.log(lightHouseUrl);
-
+        
         setOpen(true);
         setModalHeader('Lighthouse Audit Report');
         setIframeLink(lightHouseUrl);
     };
+    
+    const handleClickOpen = (url) => {
+        url = url.replace("://", "/")
+        const encodedURL = encodeURIComponent(url)
+        const sucuriUrl = `https://api.microlink.io?url=https%3A%2F%2Fsitecheck.sucuri.net%2Fresults%2F${encodedURL}&pdf=true&meta=false&embed=pdf.url`
 
-    const handleClickOpen = (link) => {
+        console.log(sucuriUrl);
+
         setOpen(true);
         setModalHeader("Security Report");
-        setIframeLink(link);
+        setIframeLink(sucuriUrl);
     };
 
     const handleClose = () => {
@@ -106,7 +112,7 @@ const Results = () => {
                     <Grid item xs={12} sm={12} md={6}>
                         <Box sx={{ textAlign: "center" }} >
                             <Paper style={{ backgroundColor: lightbg, height: 352, overflow: "auto" }} elevation={3}>
-                                <Typography pt={1} variant="h6" color="primary">Performace and Audit Reports ({result.original_lang})</Typography>
+                                <Typography pt={1} variant="h6" color="primary">Performace and Audit Reports</Typography>
                                 {/* <Typography px={2} py={2} sx={{ textAlign: "left" }}>
                                     {result.textual_data.rawOriginalText}
                                 </Typography> */}
@@ -119,6 +125,7 @@ const Results = () => {
                                 >
                                     Get Lighthouse Report
                                 </Button>
+                                {' '}
                                 <Button
                                     sx={{ textTransform: 'none' }}
                                     variant="outlined"
@@ -254,7 +261,7 @@ const Results = () => {
                     width="100%"
                     height="4500px"
                     scrolling="yes"
-                    loading="eager"
+                    loading="lazy"
                 />
             </Dialog>
 
