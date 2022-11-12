@@ -1,63 +1,29 @@
-// import React from 'react';
-// import { results } from '../atoms';
-// import { useRecoilValue } from 'recoil';
-
-// //MUI
-// import { Box } from '@mui/material';
-
-
-// const Results = () => {
-
-//     const result = useRecoilValue(results)
-
-//     return (
-//         <Box>
-//             <Box>
-//                 <b>Stats</b> <br />
-//                 <pre>{JSON.stringify(result.len, null, 4)}</pre>
-//             </Box>
-//             <Box mt={5}>
-//                 <b>Keywords</b> <br />
-//                 <pre>{JSON.stringify(result.keywords, null, 4)}</pre>
-//             </Box>
-//             <Box mt={5}>
-//                 <b>Original Language</b> <br />
-//                 {result.original_lang}
-//             </Box>
-//             <Box mt={5}>
-//                 <b>Title</b> <br />
-//                 {result.textual_data.title}
-//             </Box>
-//             <Box mt={5}>
-//                 <b>Main Text</b> <br />
-//                 {result.textual_data.mainText}
-//             </Box>
-//             <Box mt={5}>
-//                 <b>Extractive Summary</b> <br />
-//                 {result.textual_data.extractive_summary}
-//             </Box>
-//             <Box mt={5}>
-//                 <b>Raw Text</b> <br />
-//                 {result.textual_data.rawText}
-//             </Box>
-//         </Box>
-//     );
-// }
-
-// export default Results;
-
-import React from 'react';
+import React, { useState, forwardRef } from 'react';
 import { results } from '../atoms';
 import { useRecoilValue } from 'recoil';
+import { useSearchParams } from 'react-router-dom';
+
 
 //MUI
-import { Box, Container, Paper, Typography, Chip, Grid } from '@mui/material';
+import { Box, Container, Paper, Typography, Chip, Grid, Button } from '@mui/material';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { styled } from '@mui/material/styles';
 import { cyan } from '@mui/material/colors';
+import Dialog from "@mui/material/Dialog";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import Slide from "@mui/material/Slide";
+import Iframe from "react-iframe";
+
+
+const Transition = forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
 
 const ListItem = styled('li')(({ theme }) => ({
     margin: theme.spacing(0.5),
@@ -72,11 +38,40 @@ const Results = () => {
 
     const chipData = result.keywords;
 
+    const [searchParams] = useSearchParams();
+    const url = searchParams.get("url");
 
     const [value, setValue] = React.useState('1');
+    const [open, setOpen] = useState(false);
+    const [modalHeader, setModalHeader] = useState("");
+    const [iframeLink, setIframeLink] = useState("");
+
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
+    };
+
+    const handleLightHouseClickOpen = (url) => {
+        const encodedURL = `?url=${encodeURIComponent(url)}`
+        const lightHouseUrl = `https://lighthouse.microlink.io/?url=` + encodeURIComponent(`https://api.microlink.io/${encodedURL}&meta=false&insights=true`)
+        
+        console.log(lightHouseUrl);
+        
+        setOpen(true);
+        setModalHeader('Lighthouse Audit Report');
+        setIframeLink(lightHouseUrl);
+    };
+
+    const handleClickOpen = (link) => {
+        setOpen(true);
+        setModalHeader("Security Report");
+        setIframeLink(link);
+      };
+    
+    const handleClose = () => {
+        setOpen(false);
+        setModalHeader("");
+        setIframeLink("");
     };
 
 
@@ -97,6 +92,30 @@ const Results = () => {
                 </Paper>
             </Box>
 
+
+            <Box pt={2} pb={1}>
+                <Button
+                    size="small"
+                    variant="outlined"
+                    onClick={() =>
+                        handleLightHouseClickOpen(url)
+                    }
+                >
+                    Lighthouse Report
+                </Button>
+            </Box>
+
+            <Box pt={2} pb={1}>
+                <Button
+                    size="small"
+                    variant="outlined"
+                    onClick={() =>
+                        handleClickOpen(url)
+                    }
+                >
+                    Security Report
+                </Button>
+            </Box>
 
             <Box pt={2} pb={1} sx={{ textAlign: "center" }}>
                 <Paper style={{ backgroundColor: lightbg }} elevation={3}>
@@ -187,6 +206,40 @@ const Results = () => {
                     </Typography>
                 </Paper>
             </Box>
+
+            <Dialog
+                fullScreen
+                open={open}
+                onClose={handleClose}
+                TransitionComponent={Transition}
+            >
+                <AppBar sx={{ position: "relative" }}>
+                    <Toolbar>
+                        <Typography
+                            sx={{ ml: 2, flex: 1 }}
+                            variant="h6"
+                            component="div"
+                        >
+                            {modalHeader}
+                        </Typography>
+                        <IconButton
+                            edge="start"
+                            color="inherit"
+                            onClick={handleClose}
+                            aria-label="close"
+                        >
+                            <CloseIcon />
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+                <Iframe
+                    url={iframeLink}
+                    width="100%"
+                    height="4500px"
+                    scrolling="yes"
+                    loading="eager"
+                />
+            </Dialog>
 
             {/* <Box>
                 <pre>{JSON.stringify(result.len, null, 4)}</pre>
