@@ -82,8 +82,8 @@ const Results = () => {
 
     return (
         <Container>
-            <Box pt={3} pb={3} sx={{ width: '100%', typography: 'body1' }}>
-                <Paper style={{ backgroundColor: lightbg }}>
+            <Box pt={4} pb={1} sx={{ width: '100%', typography: 'body1' }}>
+                <Paper style={{ backgroundColor: lightbg }} elevation={3}>
                     <TabContext value={value}>
                         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                             <TabList onChange={handleChange} aria-label="lab API tabs example">
@@ -98,9 +98,9 @@ const Results = () => {
             </Box>
 
 
-            <Paper style={{ backgroundColor: lightbg }}>
-                <Box pt={2} pb={2} sx={{ textAlign: "center" }}>
-                    <Box><Typography variant="h6" color="primary">Keywords &amp; Important Phrases</Typography></Box>
+            <Box pt={2} pb={1} sx={{ textAlign: "center" }}>
+                <Paper style={{ backgroundColor: lightbg }} elevation={3}>
+                    <Box><Typography pt={1} variant="h6" color="primary">Keywords &amp; Important Phrases</Typography></Box>
                     <Paper
                         elevation={0}
                         sx={{
@@ -125,15 +125,15 @@ const Results = () => {
                             );
                         })}
                     </Paper>
-                </Box>
-            </Paper>
+                </Paper>
+            </Box>
 
-            <Box sx={{ display: "flex", flexDirection: "row" }}>
-                <Grid container spacing={4}>
+            <Box pt={2} pb={1} sx={{ display: "flex", flexDirection: "row" }}>
+                <Grid container spacing={3}>
                     {result.original_lang !== 'English' ?
                         <Grid item xs={12} sm={12} md={6}>
-                            <Box pt={3} pb={3} sx={{ textAlign: "center" }} >
-                                <Paper style={{ backgroundColor: lightbg, maxHeight: 300, overflow: "auto" }}>
+                            <Box sx={{ textAlign: "center" }} >
+                                <Paper style={{ backgroundColor: lightbg, maxHeight: 300, overflow: "auto" }} elevation={3}>
                                     <Typography pt={1} variant="h6" color="primary">Raw Web Content ({result.original_lang})</Typography>
                                     <Typography px={2} py={2} sx={{ textAlign: "left" }}>
                                         {result.textual_data.rawOriginalText}
@@ -143,8 +143,8 @@ const Results = () => {
                         </Grid>
                         :
                         <Grid item xs={12} sm={12} md={12}>
-                            <Box pt={3} pb={3} sx={{ textAlign: "center" }} >
-                                <Paper style={{ backgroundColor: lightbg, maxHeight: 300, overflow: "auto" }}>
+                            <Box sx={{ textAlign: "center" }} >
+                                <Paper style={{ backgroundColor: lightbg, maxHeight: 300, overflow: "auto" }} elevation={3}>
                                     <Typography pt={1} variant="h6" color="primary">Raw Web Content ({result.original_lang})</Typography>
                                     <Typography px={2} py={2} sx={{ textAlign: "left" }}>
                                         {result.textual_data.rawOriginalText}
@@ -155,8 +155,8 @@ const Results = () => {
                     }
                     {result.original_lang !== 'English' ?
                         <Grid item xs={12} sm={12} md={6}>
-                            <Box pt={3} pb={3} sx={{ textAlign: "center" }} >
-                                <Paper style={{ backgroundColor: lightbg, maxHeight: 300, overflow: "auto" }}>
+                            <Box sx={{ textAlign: "center" }} >
+                                <Paper style={{ backgroundColor: lightbg, maxHeight: 300, overflow: "auto" }} elevation={3}>
                                     <Typography pt={1} variant="h6" color="primary">Translated Web Content</Typography>
                                     <Typography px={2} py={2} sx={{ textAlign: "left" }}>
                                         {result.textual_data.rawText}
@@ -168,8 +168,8 @@ const Results = () => {
                 </Grid>
             </Box>
 
-            <Box pt={3} pb={3} sx={{ textAlign: "center" }}>
-                <Paper style={{ backgroundColor: lightbg }}>
+            <Box pt={2} pb={4} sx={{ textAlign: "center" }}>
+                <Paper style={{ backgroundColor: lightbg }} elevation={3}>
                     <Typography pt={1} variant="h6" color="primary">Text Properties</Typography>
                     <Typography px={2} sx={{ textAlign: "left" }}>
                         Raw Web Content Length: {result.len.rawOriginalText_len}

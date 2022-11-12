@@ -132,10 +132,10 @@ const Classify = () => {
             >
                 <Box m={2}>
                     <Typography sx={{ textAlign: "center" }}>The input text has been translated from <b>{result?.original_lang}</b> to <b>English</b>.</Typography>
-                    <Box sx={{ display: "flex", flexDirection: "row" }}>
+                    <Box mt={3} sx={{ display: "flex", flexDirection: "row" }}>
                         <Grid container spacing={3}>
                             <Grid item xs={12} md={6}>
-                                <Box pt={3} pb={3} sx={{ textAlign: "center" }} style={{ width: "100%" }} >
+                                <Box sx={{ textAlign: "center" }} style={{ width: "100%" }} >
                                     <Paper style={{ backgroundColor: lightbg, maxHeight: '80%', overflow: "auto" }}>
                                         <Typography pt={1} variant="h6" color="primary">Raw Web Content ({result?.original_lang})</Typography>
                                         <Typography px={2} py={2} sx={{ textAlign: "justify", maxHeight: 400, overflow: "auto" }}>
@@ -145,7 +145,7 @@ const Classify = () => {
                                 </Box>
                             </Grid>
                             <Grid item xs={12} md={6}>
-                                <Box pt={3} pb={3} sx={{ textAlign: "center" }} style={{ width: "100%" }}>
+                                <Box sx={{ textAlign: "center" }} style={{ width: "100%" }}>
                                     <Paper style={{ backgroundColor: lightbg, maxHeight: '80%', overflow: "auto" }}>
                                         <Typography pt={1} variant="h6" color="primary">Translated Content (English)</Typography>
                                         <Typography px={2} py={2} sx={{ textAlign: "justify", maxHeight: 400, overflow: "auto" }} >
