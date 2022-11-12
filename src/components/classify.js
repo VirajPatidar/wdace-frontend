@@ -74,6 +74,10 @@ const Classify = () => {
                         handleOpen();
                     else
                         navigate("/results");
+                        navigate({
+                            pathname: "/results",
+                            search: `?url=${URL}`,
+                        })
                 })
                 .catch(err => {
                     console.log(err);
