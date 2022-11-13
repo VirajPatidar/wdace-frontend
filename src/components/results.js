@@ -66,7 +66,7 @@ const Results = () => {
     const handleClickOpen = (url) => {
         url = url.replace("://", "/")
         const encodedURL = encodeURIComponent(url)
-        const sucuriUrl = `https://api.microlink.io?url=https%3A%2F%2Fsitecheck.sucuri.net%2Fresults%2F${encodedURL}&pdf=true&meta=false&embed=pdf.url`
+        const sucuriUrl = `https://api.microlink.io?url=https%3A%2F%2Fsitecheck.sucuri.net%2Fresults%2F${encodedURL}&pdf=true&waitUntil=networkidle0&meta=false&embed=pdf.url`
 
         console.log(sucuriUrl);
 
@@ -125,7 +125,7 @@ const Results = () => {
                                 >
                                     Get Lighthouse Report
                                 </Button>
-                                {' '}
+                                &nbsp;&nbsp;&nbsp;
                                 <Button
                                     sx={{ textTransform: 'none' }}
                                     variant="outlined"
