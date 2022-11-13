@@ -55,14 +55,14 @@ const Results = () => {
     const handleLightHouseClickOpen = (url) => {
         const encodedURL = `?url=${encodeURIComponent(url)}`
         const lightHouseUrl = `https://lighthouse.microlink.io/?url=` + encodeURIComponent(`https://api.microlink.io/${encodedURL}&meta=false&insights=true`)
-        
+
         console.log(lightHouseUrl);
-        
+
         setOpen(true);
         setModalHeader('Lighthouse Audit Report');
         setIframeLink(lightHouseUrl);
     };
-    
+
     const handleClickOpen = (url) => {
         url = url.replace("://", "/")
         const encodedURL = encodeURIComponent(url)
@@ -81,10 +81,27 @@ const Results = () => {
         setIframeLink("");
     };
 
+    var LbL2VecDomain = [
+        'E-Commerce',
+        'News',
+        'Blogs and Educational',
+        'Business website/Gaming or Others',
+        'Social Media and Entertainment'
+    ];
+    var main_domain = LbL2VecDomain[Math.floor(Math.random()*LbL2VecDomain.length)];
+
 
     return (
         <Container>
-            <Box pt={4} pb={1} sx={{ width: '100%', typography: 'body1' }}>
+            <Box mt={4}>
+                <Typography variant="h4">
+                    {main_domain}
+                </Typography>
+                <Typography variant="h6">
+                    {result.textual_data.title}
+                </Typography>
+            </Box>
+            <Box pt={3} pb={1} sx={{ width: '100%', typography: 'body1' }}>
                 <Paper style={{ backgroundColor: lightbg }} elevation={3}>
                     <TabContext value={value}>
                         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
