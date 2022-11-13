@@ -73,7 +73,6 @@ const Classify = () => {
                     if (res.data.original_lang !== 'English')
                         handleOpen();
                     else
-                        navigate("/results");
                         navigate({
                             pathname: "/results",
                             search: `?url=${URL}`,
