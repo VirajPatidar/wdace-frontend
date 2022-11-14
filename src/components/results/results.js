@@ -21,6 +21,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import Iframe from "react-iframe";
+import Link from '@mui/material/Link';
 
 
 const Transition = forwardRef(function Transition(props, ref) {
@@ -83,21 +84,21 @@ const Results = () => {
         setIframeLink("");
     };
 
-    var LbL2VecDomain = [
-        'E-Commerce',
-        'News',
-        'Blogs and Educational',
-        'Business website/Gaming or Others',
-        'Social Media and Entertainment'
-    ];
-    var main_domain = LbL2VecDomain[Math.floor(Math.random() * LbL2VecDomain.length)];
+    // var LbL2VecDomain = [
+    //     'E-Commerce',
+    //     'News',
+    //     'Blogs and Educational',
+    //     'Business website/Gaming or Others',
+    //     'Social Media and Entertainment'
+    // ];
+    // var main_domain = LbL2VecDomain[Math.floor(Math.random() * LbL2VecDomain.length)];
 
 
     return (
         <Container>
             <Box mt={4}>
                 <Typography variant="h4">
-                    {main_domain}
+                    {result.LbLDomain}
                 </Typography>
                 <Typography variant="h6">
                     {result.textual_data.title}
@@ -141,8 +142,8 @@ const Results = () => {
             <Box pt={2} pb={1} sx={{ display: "flex", flexDirection: "row" }}>
                 <Grid container spacing={3} alignItems="stretch">
                     <Grid item xs={12} sm={12} md={6}>
-                        <Box sx={{ textAlign: "center" }} >
-                            <Paper style={{ backgroundColor: lightbg, paddingBottom: '8px' }} elevation={3}>
+                        <Box sx={{ textAlign: "center", height: '100%' }} >
+                            <Paper style={{ backgroundColor: lightbg, paddingBottom: '8px', height: '100%' }} elevation={3}>
                                 <Typography pt={1} variant="h6" color="primary">Web Preview</Typography>
                                 <a href={url} target="_blank" rel="noreferrer">
                                     <img src={webPreviewURL} style={{ height: '90%', width: '90%', objectFit: 'contain' }} loading="lazy" alt="Web Preview"></img>
@@ -152,15 +153,30 @@ const Results = () => {
                     </Grid>
                     <Grid item xs={12} sm={12} md={6}>
                         <Box sx={{ textAlign: "center", height: '100%' }} >
-                            <Paper sx={{ backgroundColor: lightbg, height: '100%' }} elevation={3} alignItems="stretch">
+                            <Paper sx={{ backgroundColor: lightbg, height: '100%', paddingBottom: '8px' }} elevation={3} alignItems="stretch">
                                 <Typography pt={1} variant="h6" color="primary">Performace and Audit Reports</Typography>
-                                <Box mt={3}>
+                                <Box ml={2} p={2} sx={{ textAlign: "left" }}>
                                     <strong>Response Time:</strong> {result.current_status.time_taken} <br />
                                     <strong>Response Status Code:</strong> {result.current_status.status_code} <br />
                                     <strong>Response Status Text:</strong> {result.current_status.status_text} <br />
                                     <strong>Content Length:</strong> {result.current_status.content_length} <br />
                                     <strong>Content Type:</strong> {result.current_status.content_type} <br />
                                 </Box>
+                                {result.similar_urls.length > 0 &&
+                                    <Box ml={4} mr={4} sx={{textAlign: "left"}}>
+                                        <strong>Similar URLs:</strong> <br />
+                                        {result.similar_urls.map((u, i) => {
+                                            return (
+                                                <>
+                                                    {i + 1}{`) `}
+                                                    <Link href="u" underline="hover">
+                                                        {u} <br />
+                                                    </Link>
+                                                </>
+                                            );
+                                        })}
+                                    </Box>
+                                }
                                 <Box mt={3}>
                                     <Button
                                         sx={{ textTransform: 'none' }}
