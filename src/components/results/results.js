@@ -48,6 +48,7 @@ const Results = () => {
     const [modalHeader, setModalHeader] = useState("");
     const [iframeLink, setIframeLink] = useState("");
 
+    const webPreviewURL = `https://api.microlink.io?url=${encodeURIComponent(url)}&screenshot=true&waitUntil=networkidle2&meta=false&embed=screenshot.url`
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -138,17 +139,20 @@ const Results = () => {
                 </Grid>
             </Box>
             <Box pt={2} pb={1} sx={{ display: "flex", flexDirection: "row" }}>
-                <Grid container spacing={3}>
+                <Grid container spacing={3} alignItems="stretch">
                     <Grid item xs={12} sm={12} md={6}>
                         <Box sx={{ textAlign: "center" }} >
-                            <Paper style={{ backgroundColor: lightbg, height: 355 }} elevation={3}>
+                            <Paper style={{ backgroundColor: lightbg, paddingBottom: '8px' }} elevation={3}>
                                 <Typography pt={1} variant="h6" color="primary">Web Preview</Typography>
+                                <a href={url} target="_blank" rel="noopener">
+                                    <img src={webPreviewURL} style={{ height: '90%', width: '90%', objectFit: 'contain'}} loading="lazy"></img>
+                                </a>
                             </Paper>
                         </Box>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6}>
-                        <Box sx={{ textAlign: "center" }} >
-                            <Paper style={{ backgroundColor: lightbg, height: 352, overflow: "auto" }} elevation={3}>
+                        <Box sx={{ textAlign: "center", height: '100%' }} >
+                            <Paper sx={{ backgroundColor: lightbg, height: '100%' }} elevation={3} alignItems="stretch">
                                 <Typography pt={1} variant="h6" color="primary">Performace and Audit Reports</Typography>
                                 {/* <Typography px={2} py={2} sx={{ textAlign: "left" }}>
                                     {result.textual_data.rawOriginalText}
