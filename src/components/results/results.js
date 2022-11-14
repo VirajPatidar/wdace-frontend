@@ -145,7 +145,7 @@ const Results = () => {
                             <Paper style={{ backgroundColor: lightbg, paddingBottom: '8px' }} elevation={3}>
                                 <Typography pt={1} variant="h6" color="primary">Web Preview</Typography>
                                 <a href={url} target="_blank" rel="noreferrer">
-                                    <img src={webPreviewURL} style={{ height: '90%', width: '90%', objectFit: 'contain'}} loading="lazy" alt="Web Preview"></img>
+                                    <img src={webPreviewURL} style={{ height: '90%', width: '90%', objectFit: 'contain' }} loading="lazy" alt="Web Preview"></img>
                                 </a>
                             </Paper>
                         </Box>
@@ -154,28 +154,34 @@ const Results = () => {
                         <Box sx={{ textAlign: "center", height: '100%' }} >
                             <Paper sx={{ backgroundColor: lightbg, height: '100%' }} elevation={3} alignItems="stretch">
                                 <Typography pt={1} variant="h6" color="primary">Performace and Audit Reports</Typography>
-                                {/* <Typography px={2} py={2} sx={{ textAlign: "left" }}>
-                                    {result.textual_data.rawOriginalText}
-                                </Typography> */}
-                                <Button
-                                    sx={{ textTransform: 'none' }}
-                                    variant="outlined"
-                                    onClick={() =>
-                                        handleLightHouseClickOpen(url)
-                                    }
-                                >
-                                    Get Lighthouse Report
-                                </Button>
-                                &nbsp;&nbsp;&nbsp;
-                                <Button
-                                    sx={{ textTransform: 'none' }}
-                                    variant="outlined"
-                                    onClick={() =>
-                                        handleClickOpen(url)
-                                    }
-                                >
-                                    Get Security Report
-                                </Button>
+                                <Box mt={3}>
+                                    <strong>Response Time:</strong> {result.current_status.time_taken} <br />
+                                    <strong>Response Status Code:</strong> {result.current_status.status_code} <br />
+                                    <strong>Response Status Text:</strong> {result.current_status.status_text} <br />
+                                    <strong>Content Length:</strong> {result.current_status.content_length} <br />
+                                    <strong>Content Type:</strong> {result.current_status.content_type} <br />
+                                </Box>
+                                <Box mt={3}>
+                                    <Button
+                                        sx={{ textTransform: 'none' }}
+                                        variant="outlined"
+                                        onClick={() =>
+                                            handleLightHouseClickOpen(url)
+                                        }
+                                    >
+                                        Get Lighthouse Report
+                                    </Button>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <Button
+                                        sx={{ textTransform: 'none' }}
+                                        variant="outlined"
+                                        onClick={() =>
+                                            handleClickOpen(url)
+                                        }
+                                    >
+                                        Get Security Report
+                                    </Button>
+                                </Box>
                             </Paper>
                         </Box>
                     </Grid>
