@@ -22,15 +22,15 @@ function randomColor() {
     return `#${red}${green}${blue}`;
 }
 
-const BidirectionalSearchGraph = ({domain, child_nodes, parent_nodes}) => {
+const BidirectionalSearchGraph = ({ domain, child_nodes, parent_nodes }) => {
 
-    let graph_nodes=[]
-    let graph_edges=[]
-    let unique_nodes=[]
+    let graph_nodes = []
+    let graph_edges = []
+    let unique_nodes = []
 
 
-    let child=0; let parent=0;
-    if(Object.keys(child_nodes).length !== 0){
+    let child = 0; let parent = 0;
+    if (Object.keys(child_nodes).length !== 0) {
         child = 1;
         for (let c in child_nodes) {
             unique_nodes.push(String(c))
@@ -39,7 +39,7 @@ const BidirectionalSearchGraph = ({domain, child_nodes, parent_nodes}) => {
             }
         }
     }
-    if(Object.keys(parent_nodes).length !== 0){
+    if (Object.keys(parent_nodes).length !== 0) {
         parent = 1;
         for (let p in parent_nodes) {
             unique_nodes.push(String(p))
@@ -56,21 +56,21 @@ const BidirectionalSearchGraph = ({domain, child_nodes, parent_nodes}) => {
 
     unique_nodes = removeDuplicates(unique_nodes)
     for (let i = 0; i < unique_nodes.length; i++) {
-        graph_nodes.push({id: String(unique_nodes[i]), label: unique_nodes[i], color: randomColor()})
+        graph_nodes.push({ id: String(unique_nodes[i]), label: unique_nodes[i], color: randomColor() })
     }
 
-    if(parent === 1){
+    if (parent === 1) {
         for (let p in parent_nodes) {
             for (let i = 0; i < parent_nodes[p].length; i++) {
-                graph_edges.push({from: String(p), to: String(parent_nodes[p][i])})
+                graph_edges.push({ from: String(p), to: String(parent_nodes[p][i]) })
             }
         }
     }
 
-    if(child === 1){
+    if (child === 1) {
         for (let c in child_nodes) {
             for (let i = 0; i < child_nodes[c].length; i++) {
-                graph_edges.push({from: String(c), to: String(child_nodes[c][i])})
+                graph_edges.push({ from: String(c), to: String(child_nodes[c][i]) })
             }
         }
     }
@@ -84,7 +84,15 @@ const BidirectionalSearchGraph = ({domain, child_nodes, parent_nodes}) => {
         }
     })
 
-    const { graph } = state;
+    const default_graph = {
+        counter: 1,
+        graph: {
+            nodes: [{ id: String(domain), label: domain, color: randomColor() }],
+            edges: []
+        }
+    }
+
+    const { graph } = graph_nodes.length === 0 ? default_graph : state;
 
     return (
         <Box>
