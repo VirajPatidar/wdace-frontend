@@ -6,7 +6,7 @@ import NotFound from './components/notFound';
 import Home from './components/home';
 import Classify from './components/classify';
 import Approach from './components/approach';
-import Results from './components/results';
+import Results from './components/results/results';
 import Test from './components/test';
 
 // MUI
