@@ -88,7 +88,10 @@ const Classify = () => {
 
 
     const goToResults = () => {
-        navigate("/results");
+        navigate({
+            pathname: "/results",
+            search: `?url=${URL}`,
+        })
     }
 
 
