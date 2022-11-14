@@ -144,8 +144,8 @@ const Results = () => {
                         <Box sx={{ textAlign: "center" }} >
                             <Paper style={{ backgroundColor: lightbg, paddingBottom: '8px' }} elevation={3}>
                                 <Typography pt={1} variant="h6" color="primary">Web Preview</Typography>
-                                <a href={url} target="_blank" rel="noopener">
-                                    <img src={webPreviewURL} style={{ height: '90%', width: '90%', objectFit: 'contain'}} loading="lazy"></img>
+                                <a href={url} target="_blank" rel="noreferrer">
+                                    <img src={webPreviewURL} style={{ height: '90%', width: '90%', objectFit: 'contain'}} loading="lazy" alt="Web Preview"></img>
                                 </a>
                             </Paper>
                         </Box>

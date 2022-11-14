@@ -59,7 +59,7 @@ const BidirectionalSearchGraph = ({domain, child_nodes, parent_nodes}) => {
         graph_nodes.push({id: String(unique_nodes[i]), label: unique_nodes[i], color: randomColor()})
     }
 
-    if(parent == 1){
+    if(parent === 1){
         for (let p in parent_nodes) {
             for (let i = 0; i < parent_nodes[p].length; i++) {
                 graph_edges.push({from: String(p), to: String(parent_nodes[p][i])})
@@ -67,7 +67,7 @@ const BidirectionalSearchGraph = ({domain, child_nodes, parent_nodes}) => {
         }
     }
 
-    if(child == 1){
+    if(child === 1){
         for (let c in child_nodes) {
             for (let i = 0; i < child_nodes[c].length; i++) {
                 graph_edges.push({from: String(c), to: String(child_nodes[c][i])})
