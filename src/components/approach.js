@@ -1,7 +1,7 @@
 import React from 'react';
 
 //Images
-import modelDiagram from '../images/model_diagram.png';
+import modelDiagram from '../images/model_diagram.JPG';
 import reactSvg from '../images/react.svg';
 import djangoSvg from '../images/django.svg';
 import muiSvg from '../images/material-ui.svg';
