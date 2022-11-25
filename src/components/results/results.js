@@ -163,7 +163,7 @@ const Results = () => {
                                     <strong>Content Type:</strong> {result.current_status.content_type} <br />
                                 </Box>
                                 {result.similar_urls.length > 0 &&
-                                    <Box ml={4} mr={4} sx={{textAlign: "left"}}>
+                                    <Box ml={4} mr={4} sx={{textAlign: "left", overflow: "auto", height: "150px"}}>
                                         <strong>Similar URLs:</strong> <br />
                                         {result.similar_urls.map((u, i) => {
                                             return (
