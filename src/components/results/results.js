@@ -169,7 +169,7 @@ const Results = () => {
                                             return (
                                                 <>
                                                     {i + 1}{`) `}
-                                                    <Link href="u" underline="hover">
+                                                    <Link href={u} target="_blank" rel="noopener" underline="hover">
                                                         {u} <br />
                                                     </Link>
                                                 </>
