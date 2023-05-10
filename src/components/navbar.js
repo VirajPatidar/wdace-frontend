@@ -48,7 +48,7 @@ const Navbar = () => {
                             color="inherit"
                             component="div"
                         >
-                            WDACE
+                            WebDACE
                         </Typography>
                     </Link>
 

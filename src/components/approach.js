@@ -1,7 +1,7 @@
 import React from 'react';
 
 //Images
-import modelDiagram from '../images/model_diagram.JPG';
+import modelDiagram from '../images/model_diagram.png';
 import reactSvg from '../images/react.svg';
 import djangoSvg from '../images/django.svg';
 import muiSvg from '../images/material-ui.svg';
@@ -26,12 +26,12 @@ const Approach = () => {
                     <Box mt={5} mb={4} pt={3} pb={3} pl={4} pr={4} style={{ backgroundColor: "#e0f7fa", borderRadius: "20px" }}>
                         <Box justifyContent="flex-start" mb={2}>
                             <Typography variant='h5' gutterBottom>
-                                Web Document Analyzer and Classification Engine
+                                Web Document Analyzer and Classification Engine (WebDACE)
                             </Typography>
                         </Box>
                         <Box mt={2}>
                             <Typography variant='body1'>
-                                Web Document Analyzer and Classification engine can analyze and classify unidentified web documents. The app provides the following features:
+                                WebDACE can analyze and classify unidentified web documents. The app provides the following features:
                             </Typography>
                             <List>
                                 <ListItem disablePadding>
@@ -87,7 +87,7 @@ const Approach = () => {
                         <Box mt={7} >
                             <Box>
                                 <Typography variant='h5'>
-                                    Model Diagram depicting Web Document Classification
+                                    WebDACE Model Diagram
                                 </Typography>
                             </Box>
                             <Box pt={2} sx={{ textAlign: 'center' }}>
@@ -158,15 +158,15 @@ const Approach = () => {
                             </Box>
                             <Box pt={4}>
                                 <Typography variant='h6'>
-                                    2. Lbl2Vec:
+                                    2. LDA:
                                 </Typography>
                                 <Box ml={3}>
                                     <Typography variant='body1'>
-                                        Lbl2Vec is an algorithm for unsupervised document classification and unsupervised document retrieval. It automatically generates jointly embedded label, document and word vectors and returns documents of categories modeled by manually predefined keywords.
+                                        The Latent Dirichlet allocation (LDA) is a Bayesian probabilistic model of text documents that determines sets of observations from unobserved groups. Hence, Topic Modelling using LDA is for discovering the abstract “topics” that occur in a collection of documents. The goal of the LDA algorithm is to discover these underlying topics from the corpus and assign each document a probability distribution over these topics. This probability distribution can then be used to classify the document into a particular domain or topic.
                                     </Typography>
                                     <Box pt={2}>
                                         <Typography variant='body1'>
-                                            The key idea of the algorithm is that many semantically similar keywords can represent a topic. In the first step, the algorithm creates a joint embedding of document and word vectors. Once documents and words are embedded in a vector space, the goal of the algorithm is to learn label vectors from previously manually defined keywords representing a topic. Finally, the algorithm can predict the affiliation of documents to topics from document vector - label vector similarities.
+                                            This technique becomes convenient to use because it does not require labelled data for training purposes, it automatically learns the topics from input documents. LDA has been shown to be effective in domain classification tasks, as it can capture the latent structure of the text data and discover meaningful patterns that can be used for classification.
                                         </Typography>
                                     </Box>
                                     <Box mt={3}>
@@ -178,44 +178,44 @@ const Approach = () => {
                                                 <ListItemIcon>
                                                     <ArrowRightIcon />
                                                 </ListItemIcon>
-                                                <ListItemText primary="Use the manually defined keywords for each topic of interest" />
+                                                <ListItemText primary="Build the Document-Term Matrix: Create a document-term matrix (DTM) which represents the occurrence of each term in each document" />
                                             </ListItem>
                                             <ListItem disablePadding>
                                                 <ListItemIcon>
                                                     <ArrowRightIcon />
                                                 </ListItemIcon>
-                                                <ListItemText primary="Create jointly embedded document and word vectors using Doc2Vec" />
+                                                <ListItemText primary="Parameter Tuning: Determine the number of topics (k) and other hyperparameters of the LDA model such as alpha and beta. These parameters need to be set appropriately to ensure that the model accurately represents the underlying data" />
                                             </ListItem>
                                             <ListItem disablePadding>
                                                 <ListItemIcon>
                                                     <ArrowRightIcon />
                                                 </ListItemIcon>
-                                                <ListItemText primary="Find document vectors that are similar to the keyword vectors of each topic" />
+                                                <ListItemText primary="Fit the LDA Model: Fit the LDA model using an algorithm like Gibbs Sampling or Variational Bayes. This will generate a set of topic-word and document-topic distributions" />
                                             </ListItem>
                                             <ListItem disablePadding>
                                                 <ListItemIcon>
                                                     <ArrowRightIcon />
                                                 </ListItemIcon>
-                                                <ListItemText primary="Clean outlier document vectors for each topic" />
+                                                <ListItemText primary="Interpret Topics: Interpret the generated topics by examining the top N most probable words associated with each topic. The top words can provide insights into the topics and their associated documents" />
                                             </ListItem>
                                             <ListItem disablePadding>
                                                 <ListItemIcon>
                                                     <ArrowRightIcon />
                                                 </ListItemIcon>
-                                                <ListItemText primary="Compute the centroid of the outlier cleaned document vectors as label vector for each topic" />
+                                                <ListItemText primary="Evaluate Model: Evaluate the LDA model using metrics like coherence score, perplexity, or topic uniqueness" />
                                             </ListItem>
                                             <ListItem disablePadding>
                                                 <ListItemIcon>
                                                     <ArrowRightIcon />
                                                 </ListItemIcon>
-                                                <ListItemText primary="Compute label vector <-> document vector similarities for each label vector and document vector in the dataset" />
+                                                <ListItemText primary="Topic Labelling: Assign labels to each topic based on the top words and the domain knowledge" />
                                             </ListItem>
                                         </List>
                                     </Box>
 
                                     <Box pt={2}>
                                         <Typography variant='body1'>
-                                            The Lbl2vec model was trained with 2500 (5 x 500) websites to classify the input webpage into the following 5 categories:
+                                            The LDA model was trained with over 120000 text documents to classify the input webpage into the following 4 categories:
                                         </Typography>
                                     </Box>
                                     <Box>
@@ -224,31 +224,25 @@ const Approach = () => {
                                                 <ListItemIcon>
                                                     <ArrowRightIcon />
                                                 </ListItemIcon>
-                                                <ListItemText primary="E-Commerce" />
+                                                <ListItemText primary="Science and Technology" />
                                             </ListItem>
                                             <ListItem disablePadding>
                                                 <ListItemIcon>
                                                     <ArrowRightIcon />
                                                 </ListItemIcon>
-                                                <ListItemText primary="News" />
+                                                <ListItemText primary="Sports" />
                                             </ListItem>
                                             <ListItem disablePadding>
                                                 <ListItemIcon>
                                                     <ArrowRightIcon />
                                                 </ListItemIcon>
-                                                <ListItemText primary="Blogs and Educational" />
+                                                <ListItemText primary="World" />
                                             </ListItem>
                                             <ListItem disablePadding>
                                                 <ListItemIcon>
                                                     <ArrowRightIcon />
                                                 </ListItemIcon>
-                                                <ListItemText primary="Business website (not ecommerce), Gaming and Others" />
-                                            </ListItem>
-                                            <ListItem disablePadding>
-                                                <ListItemIcon>
-                                                    <ArrowRightIcon />
-                                                </ListItemIcon>
-                                                <ListItemText primary="Social Media and Entertainment" />
+                                                <ListItemText primary="Business" />
                                             </ListItem>
                                         </List>
                                     </Box>
